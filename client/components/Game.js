@@ -16,10 +16,11 @@ function Game() {
     const options = [correctAnswer]
     while (options.length < 4) {
       const incorrectAnswer = correctAnswer + Math.floor(Math.random() * 3) - 1
-      if (!options.includes(correctAnswer)) {
-        if (!options.includes(incorrectAnswer)) {
-          options.push(incorrectAnswer)
-        }
+      if (
+        !options.includes(incorrectAnswer) &&
+        incorrectAnswer !== correctAnswer
+      ) {
+        options.push(incorrectAnswer)
       }
     }
     // Shuffle the options
