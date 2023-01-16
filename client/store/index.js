@@ -2,10 +2,10 @@ import {createLogger} from 'redux-logger'
 import {configureStore} from '@reduxjs/toolkit'
 
 import auth from './authSlice'
-import mathGameSlice from './gameSlice'
+import gameSlice from './gameSlice'
 
 const store = configureStore({
-  reducer: {auth, mathGameSlice},
+  reducer: {auth, gameSlice},
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(createLogger({collapsed: true}))
 })
