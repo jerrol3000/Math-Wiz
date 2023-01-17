@@ -8,6 +8,7 @@ const initialState = {
   timeLeft: 0,
   gameOver: false,
   correctAnswers: 0,
+  multiplier: 2,
 }
 
 const gameSlice = createSlice({
@@ -35,6 +36,9 @@ const gameSlice = createSlice({
     setCorrectAnswers: (state, action) => {
       state.correctAnswers = action.payload
     },
+    setMultipler: (state, action) => {
+      state.multiplier = state.level * 2
+    },
   },
 })
 
@@ -46,6 +50,7 @@ export const {
   setCorrectAnswers,
   setTimeLeft,
   setUseTimer,
+  setMultipler,
 } = gameSlice.actions
 
 export default gameSlice.reducer

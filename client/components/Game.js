@@ -9,8 +9,16 @@ import Lives from './Lives'
 import Level from './Level'
 
 function Game() {
-  const {level, lives, score, useTimer, timeLeft, gameOver, correctAnswers} =
-    useSelector((state) => state.game)
+  const {
+    level,
+    lives,
+    score,
+    useTimer,
+    timeLeft,
+    gameOver,
+    correctAnswers,
+    multiplier,
+  } = useSelector((state) => state.game)
   const dispatch = useDispatch()
 
   const handleCorrectAnswer = () => {
@@ -57,6 +65,7 @@ function Game() {
             level={level}
             handleCorrectAnswer={handleCorrectAnswer}
             handleIncorrectAnswer={handleIncorrectAnswer}
+            multiplier={multiplier}
           />
           {useTimer && <Timer timeLeft={timeLeft} />}
         </>

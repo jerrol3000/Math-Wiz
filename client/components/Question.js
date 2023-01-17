@@ -47,7 +47,12 @@ import {useSelector} from 'react-redux'
 //   )
 // }
 
-const Question = ({level, handleCorrectAnswer, handleIncorrectAnswer}) => {
+const Question = ({
+  level,
+  handleCorrectAnswer,
+  handleIncorrectAnswer,
+  multiplier,
+}) => {
   const [animation, setAnimation] = useState('')
 
   const {useTimer, timeLeft} = useSelector((state) => state.game)
@@ -55,8 +60,8 @@ const Question = ({level, handleCorrectAnswer, handleIncorrectAnswer}) => {
   const generateQuestion = () => {
     const operations = ['+', '-', '*', '/']
     const operation = operations[Math.floor(Math.random() * operations.length)]
-    const num1 = Math.floor(Math.random() * level)
-    const num2 = Math.floor(Math.random() * level)
+    const num1 = Math.floor(Math.random() * multiplier)
+    const num2 = Math.floor(Math.random() * multiplier)
     let answer = 0
     switch (operation) {
       case '+':
@@ -77,7 +82,8 @@ const Question = ({level, handleCorrectAnswer, handleIncorrectAnswer}) => {
     }
     return {text: `${num1} ${operation} ${num2}`, answer}
   }
-  console.log(generateQuestion())
+  console.log('generateQuestion(', generateQuestion())
+
   const [question, setQuestion] = useState(generateQuestion())
 
   const generateOptions = (answer) => {
